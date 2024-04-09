@@ -1,0 +1,35 @@
+conda create -n tensorenv
+
+Request CPU Node:
+srun --pty /bin/bash
+
+Request GPU Node (Make sure to run on HPC node)
+srun -p gpu --gres=gpu --pty /bin/bash
+
+
+Internet access (to resolve error NewConnectionError)
+export http_proxy=http://172.16.1.2:3128; export https_proxy=http://172.16.1.2:3128
+
+
+Loadinh Modules:
+module load NAME
+module unload name
+module avail
+
+
+Create Conda environment
+conda info --envs
+conda create -n NAME
+conda activate NAME
+conda deactivate
+conda remove -n NAME --all
+
+
+Install jupyter lab package in conda (make sure you are HPC headnode not the GPU node):
+conda activate mycondapy311
+conda install -c conda-forge jupyterlab
+conda install ipykernel
+jupyter kernelspec list #view current jupyter kernels
+ipython kernel install --user --name=mycondapy311 #add jupyter kernel
+
+
